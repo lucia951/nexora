@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10130f">
+<meta name="description" content="NEXORA FITNESS — Tu espacio personal para planificar y registrar entrenamientos de forma equilibrada.">
+<title>NEXORA FITNESS — Tu espacio de entrenamiento</title>
+<style>
+:root{--bg:#10130f;--panel:#191f18;--panel2:#222a20;--ink:#f5f6ef;--muted:#aab2a3;--lime:#c7f36b;--line:rgba(245,246,239,.13);--red:#ff9c8d;--max:1240px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+button,input,select,textarea{font:inherit}button,a{ -webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{cursor:pointer}
+.wrap{width:min(var(--max),calc(100% - 42px));margin:auto}
+.topline{height:4px;background:linear-gradient(90deg,#8fbf42,var(--lime),#eaffb8)}
+header{position:sticky;top:0;z-index:20;background:rgba(16,19,15,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:.13em;font-size:19px}
+.logo{width:34px;height:34px;display:grid;place-items:center;background:var(--lime);color:#10130f;border-radius:8px;font-weight:1000;font-size:22px;transform:skew(-7deg)}
+.navlinks{display:flex;gap:24px;color:#c2c9ba;font-size:13px}.navlinks a:hover,.navlinks a.active{color:var(--lime)}
+.btn{border:0;background:var(--lime);color:#141a0e;padding:11px 17px;border-radius:5px;font-weight:850;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:hover{background:#ddff9c}.btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn.secondary:hover{border-color:var(--lime);color:var(--lime)}
+.menu{display:none;background:none;border:1px solid var(--line);color:white;border-radius:5px;padding:7px 11px}
+main{padding:34px 0 70px}.eyebrow{color:var(--lime);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:850}
+h1,h2,h3,p{margin-top:0}h1,h2,h3{letter-spacing:-.04em}h1{font-size:clamp(35px,5vw,57px);line-height:1.02;margin:10px 0}h2{font-size:26px;margin-bottom:8px}h3{font-size:18px;margin-bottom:7px}
+.muted{color:var(--muted)}.small{font-size:12px;color:var(--muted)}
+.hero{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:15px 0 28px}.hero p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:21px;min-width:0}
+.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-12{grid-column:span 12}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.stat{padding:15px;border-radius:9px;background:var(--panel2)}.stat strong{display:block;font-size:27px;letter-spacing:-.05em}.stat span{font-size:11px;color:var(--muted)}
+.progress{height:7px;background:#30392d;border-radius:99px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:var(--lime);border-radius:99px;transition:width .25s}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.stack{display:grid;gap:12px}.pill{font-size:10px;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(199,243,107,.25);color:var(--lime);border-radius:99px;padding:4px 8px;white-space:nowrap}
+.workout{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 0;border-bottom:1px solid var(--line)}.workout:last-child{border:0;padding-bottom:0}.workout p{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.exercise-list{display:grid;gap:9px;margin:17px 0}.exercise{display:flex;gap:11px;align-items:flex-start;padding:12px;background:var(--panel2);border-radius:8px}.exercise input{accent-color:var(--lime);width:17px;height:17px;margin-top:3px}.exercise label{font-size:13px;cursor:pointer}.exercise small{display:block;color:var(--muted);font-size:11px}
+.field{display:grid;gap:6px}.field label{font-size:12px;color:#d8dfd1;font-weight:700}.field input,.field select,.field textarea{width:100%;background:#11170f;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:11px 12px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--lime)}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:6px;padding:9px 13px;font-size:12px}.tab.active{background:var(--lime);color:#12170e;border-color:var(--lime);font-weight:800}
+.view{display:none}.view.active{display:block}
+.notice{padding:13px 15px;background:rgba(199,243,107,.07);border:1px solid rgba(199,243,107,.22);border-radius:8px;color:#dce8c9;font-size:12px}
+.empty{padding:26px;text-align:center;border:1px dashed var(--line);border-radius:9px;color:var(--muted);font-size:13px}
+.history-item{padding:13px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;font-size:13px}.history-item:last-child{border:0}
+.timer{font-size:42px;font-weight:850;letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+footer{border-top:1px solid var(--line);padding:22px 0;color:#899183;font-size:11px}
+.modalback{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.72);display:none;place-items:center;padding:18px}.modalback.open{display:grid}.modal{width:min(520px,100%);background:#171e15;border:1px solid var(--line);border-radius:13px;padding:25px;max-height:90vh;overflow:auto}.modalhead{display:flex;justify-content:space-between;gap:12px}.close{border:1px solid var(--line);background:transparent;color:white;border-radius:7px;padding:5px 10px}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--lime);color:#11170d;padding:12px 17px;border-radius:7px;font-size:13px;font-weight:800;display:none;z-index:60}.toast.show{display:block}
+@media(max-width:850px){.span-8,.span-7,.span-6,.span-5,.span-4{grid-column:span 12}.navlinks{display:none}.navlinks.open{display:flex;position:absolute;top:72px;left:0;right:0;padding:18px 22px;background:#171e15;flex-direction:column;border-bottom:1px solid var(--line)}.menu{display:block}.hero{align-items:flex-start;flex-direction:column}.hero .btn{align-self:flex-start}}
+@media(max-width:560px){.wrap{width:calc(100% - 28px)}main{padding-top:22px}.statrow{gap:7px}.stat{padding:11px}.stat strong{font-size:22px}.formgrid{grid-template-columns:1fr}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header><nav class="wrap">
+  <a class="brand" href="#inicio"><span class="logo">N</span>NEXORA <span style="color:var(--lime)">FITNESS</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="#inicio" data-view="dashboard" class="active">Panel</a><a href="#rutinas" data-view="routines">Rutinas</a><a href="#progreso" data-view="progress">Progreso</a><a href="#perfil" data-view="profile">Perfil</a>
+  </div>
+  <button class="btn" id="profileButton">MI PERFIL ↗</button>
+  <button class="menu" id="menu" aria-label="Abrir menú">☰</button>
+</nav></header>
+<main class="wrap">
+  <div class="hero"><div><div class="eyebrow">TU ESPACIO DE ENTRENAMIENTO</div><h1 id="greeting">BIENVENIDO A <span style="color:var(--lime)">NEXORA.</span></h1><p>Organiza tus sesiones, registra tus avances y encuentra un ritmo que puedas mantener.</p></div><button class="btn" id="quickStart">＋ REGISTRAR SESIÓN</button></div>
+
+  <section class="view active" id="dashboard">
+    <div class="grid">
+      <article class="panel span-8">
+        <div class="row"><div><div class="eyebrow">RESUMEN PERSONAL</div><h2>Tu actividad</h2></div><span class="pill">A TU RITMO</span></div>
+        <div class="statrow">
+          <div class="stat"><strong id="totalSessions">0</strong><span>Sesiones registradas</span></div>
+          <div class="stat"><strong id="weekSessions">0</strong><span>Esta semana</span></div>
+          <div class="stat"><strong id="totalMinutes">0</strong><span>Minutos de actividad</span></div>
+        </div>
+        <div style="margin-top:22px"><div class="row"><b style="font-size:13px">Objetivo semanal orientativo</b><span class="small" id="weeklyLabel">0 / 3 sesiones</span></div><div class="progress"><span id="weeklyBar" style="width:0%"></span></div><p class="small">Puedes cambiar este objetivo cuando quieras. Descansar también forma parte del progreso.</p></div>
+      </article>
+      <article class="panel span-4">
+        <div class="eyebrow">TU PERFIL</div><h2 id="profileName">Atleta Nexora</h2><p class="muted" id="profileSummary" style="font-size:13px">Configura tus preferencias para personalizar tu espacio.</p>
+        <button class="btn secondary" id="editProfile">EDITAR PERFIL</button>
+      </article>
+      <article class="panel span-7">
+        <div class="row"><div><div class="eyebrow">PLAN DE HOY</div><h2>Una sesión para ti</h2></div><span class="pill">SUGERENCIA</span></div>
+        <div class="workout"><div><b>Fuerza general</b><p>Sesión equilibrada · Nivel adaptable · 25–35 min</p></div><button class="btn" data-routine="strength">VER SESIÓN</button></div>
+        <div class="workout"><div><b>Movilidad y recuperación</b><p>Movimiento suave · 10–15 min</p></div><button class="btn secondary" data-routine="mobility">VER SESIÓN</button></div>
+        <p class="small" style="margin:15px 0 0">Elige la opción que encaje con cómo te encuentras hoy. Ajusta o detén cualquier ejercicio si sientes dolor, mareo o malestar.</p>
+      </article>
+      <article class="panel span-5">
+        <div class="eyebrow">HERRAMIENTA</div><h2>Temporizador</h2><p class="muted" style="font-size:13px">Control sencillo para intervalos o descansos.</p>
+        <div class="timer" id="timerDisplay">00:30</div>
+        <div class="actions"><button class="btn" id="timerStart">INICIAR</button><button class="btn secondary" id="timerReset">REINICIAR</button></div>
+      </article>
+      <article class="panel span-12">
+        <div class="row"><div><div class="eyebrow">REGISTRO RECIENTE</div><h2>Tu historial</h2></div><a href="#progreso" class="small" data-view="progress">Ver todo →</a></div>
+        <div id="recentHistory" class="empty">Todavía no hay sesiones registradas. Cuando completes una rutina, aparecerá aquí.</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="view" id="routines">
+    <div class="eyebrow">BIBLIOTECA DE MOVIMIENTO</div><h1>ELIGE TU <span style="color:var(--lime)">SESIÓN.</span></h1><p class="muted">Propuestas generales y adaptables. Empieza de forma cómoda, prioriza la técnica y deja tiempo para recuperarte.</p>
+    <div class="tabs"><button class="tab active" data-filter="all">Todas</button><button class="tab" data-filter="strength">Fuerza</button><button class="tab" data-filter="cardio">Cardio suave</button><button class="tab" data-filter="mobility">Movilidad</button></div>
+    <div class="grid" id="routineGrid"></div>
+  </section>
+
+  <section class="view" id="progress">
+    <div class="eyebrow">CONSTANCIA, NO PERFECCIÓN</div><h1>OBSERVA TU <span style="color:var(--lime)">PROGRESO.</span></h1><p class="muted">Registra la actividad que haces y consulta tu evolución sin compararte con nadie.</p>
+    <div class="grid">
+      <article class="panel span-4"><div class="eyebrow">SESIONES</div><div class="timer" id="historyCount">0</div><span class="small">Entrenamientos completados</span></article>
+      <article class="panel span-4"><div class="eyebrow">TIEMPO ACTIVO</div><div class="timer" id="historyTime">0</div><span class="small">Minutos registrados</span></article>
+      <article class="panel span-4"><div class="eyebrow">OBJETIVO SEMANAL</div><div class="timer" id="historyGoal">0/3</div><span class="small">Sesiones esta semana</span></article>
+      <article class="panel span-12"><div class="row"><h2>Historial de sesiones</h2><button class="btn secondary" id="exportData">EXPORTAR MIS DATOS</button></div><div id="fullHistory" class="empty">Aún no has registrado sesiones.</div></article>
+    </div>
+  </section>
+
+  <section class="view" id="profile">
+    <div class="eyebrow">CONFIGURACIÓN PERSONAL</div><h1>TU ESPACIO. <span style="color:var(--lime)">TU RITMO.</span></h1>
+    <div class="grid"><article class="panel span-7">
+      <h2>Perfil de entrenamiento</h2><p class="muted" style="font-size:13px">Solo usamos estos datos para personalizar esta experiencia en este navegador.</p>
+      <form id="profileForm" class="stack">
+        <div class="field"><label for="name">Cómo quieres que te llamemos</label><input id="name" maxlength="35" placeholder="Tu nombre o apodo"></div>
+        <div class="formgrid">
+          <div class="field"><label for="level">Experiencia</label><select id="level"><option value="Principiante">Estoy empezando</option><option value="Intermedio">Ya tengo práctica</option><option value="Avanzado">Tengo experiencia</option></select></div>
+          <div class="field"><label for="days">Objetivo de sesiones por semana</label><select id="days"><option value="2">2 sesiones</option><option value="3" selected>3 sesiones</option><option value="4">4 sesiones</option><option value="5">5 sesiones</option></select></div>
+        </div>
+        <div class="field"><label for="focus">Actividad que más te interesa</label><select id="focus"><option>Fuerza</option><option>Cardio suave</option><option>Movilidad</option><option>Un poco de todo</option></select></div>
+        <button class="btn" type="submit">GUARDAR PERFIL</button>
+      </form>
+    </article><article class="panel span-5"><div class="eyebrow">PRIVACIDAD Y DATOS</div><h2>Tu información</h2><p class="muted" style="font-size:13px">Esta versión guarda el perfil y el historial en el almacenamiento local de este navegador. No crea cuentas online ni envía tus datos a un servidor.</p><div class="actions"><button class="btn secondary" id="clearData">BORRAR DATOS LOCALES</button></div><p class="small" style="margin-top:15px">No introduzcas información sensible. Para usar cuentas reales, sincronización entre dispositivos o acceso protegido será necesario configurar un backend seguro.</p></article></div>
+  </section>
+</main>
+<footer><div class="wrap row"><a class="brand" href="#inicio"><span class="logo">N</span>NEXORA FITNESS</a><span>© <span id="year"></span> · Muévete a tu manera.</span></div></footer>
+
+<div class="modalback" id="sessionModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal"><div class="modalhead"><div><div class="eyebrow">REGISTRO DE ACTIVIDAD</div><h2 id="modalTitle">Registrar sesión</h2></div><button class="close" id="closeModal" aria-label="Cerrar">✕</button></div>
+    <form id="sessionForm" class="stack">
+      <div class="field"><label for="sessionType">Tipo de actividad</label><select id="sessionType"><option>Fuerza</option><option>Cardio suave</option><option>Movilidad</option><option>Actividad libre</option></select></div>
+      <div class="formgrid"><div class="field"><label for="minutes">Duración (minutos)</label><input id="minutes" type="number" min="1" max="300" value="30" required></div><div class="field"><label for="sessionDate">Fecha</label><input id="sessionDate" type="date" required></div></div>
+      <div class="field"><label for="notes">Notas (opcional)</label><textarea id="notes" rows="3" maxlength="240" placeholder="¿Cómo te has sentido?"></textarea></div>
+      <button class="btn" type="submit">GUARDAR SESIÓN</button>
+    </form>
+  </div>
+</div>
+<div class="modalback" id="routineModal" role="dialog" aria-modal="true" aria-labelledby="routineTitle">
+  <div class="modal"><div class="modalhead"><div><div class="eyebrow">SESIÓN ADAPTABLE</div><h2 id="routineTitle">Rutina</h2></div><button class="close" id="closeRoutine" aria-label="Cerrar">✕</button></div><p class="muted small" id="routineDescription"></p><div id="exerciseList" class="exercise-list"></div><div class="notice">Haz un calentamiento suave antes de empezar. Ajusta repeticiones y descansos a tu nivel. Detente si aparece dolor o malestar.</div><div class="actions"><button class="btn" id="completeRoutine">REGISTRAR SESIÓN</button></div></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const KEY='nexoraFitness_v1';
+const routines=[
+ {id:'strength',type:'strength',name:'Fuerza general',duration:30,desc:'Una propuesta de cuerpo completo, con movimientos controlados y descansos cómodos.',items:[['Calentamiento suave','5 minutos de movilidad y marcha ligera'],['Sentarse y levantarse de una silla','2 series cómodas, prioriza el control'],['Flexiones en pared','2 series cómodas'],['Puente de glúteos','2 series cómodas'],['Bird-dog','2 series lentas por lado'],['Vuelta a la calma','Respiración y estiramientos suaves']]},
+ {id:'cardio',type:'cardio',name:'Cardio suave',duration:25,desc:'Movimiento cardiovascular moderado: adapta el ritmo para poder hablar mientras te mueves.',items:[['Activación','5 minutos caminando despacio'],['Caminata a ritmo cómodo','10–15 minutos'],['Bajar el ritmo','3 minutos caminando suave'],['Vuelta a la calma','Respiración tranquila y movilidad']]},
+ {id:'mobility',type:'mobility',name:'Movilidad y recuperación',duration:15,desc:'Una sesión tranquila para moverte con comodidad. No fuerces ningún rango de movimiento.',items:[['Respiración tranquila','1–2 minutos'],['Movilidad de hombros','Movimientos lentos y cómodos'],['Gato-vaca','Movilidad suave de columna'],['Movilidad de cadera','Rango cómodo, sin rebotes'],['Estiramientos suaves','Sin dolor ni tensión excesiva']]}
+];
+let data=loadData(),currentRoutine=null,timerSeconds=30,timerInterval=null;
+function loadData(){try{return JSON.parse(localStorage.getItem(KEY))||{profile:{name:'',level:'Principiante',days:3,focus:'Un poco de todo'},sessions:[]}}catch{return{profile:{name:'',level:'Principiante',days:3,focus:'Un poco de todo'},sessions:[]}}}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function startOfWeek(d=new Date()){const x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x}
+function isThisWeek(date){return new Date(date+'T12:00:00')>=startOfWeek()}
+function totals(){const week=data.sessions.filter(s=>isThisWeek(s.date));return{count:data.sessions.length,week:week.length,minutes:data.sessions.reduce((a,s)=>a+Number(s.minutes),0),weekCount:week.length}}
+function render(){
+ const t=totals(),goal=Number(data.profile.days)||3;
+ document.getElementById('greeting').innerHTML=`HOLA${data.profile.name?' '+escapeHTML(data.profile.name.toUpperCase()):''}. <span style="color:var(--lime)">A MOVERSE.</span>`;
+ document.getElementById('profileName').textContent=data.profile.name||'Atleta Nexora';
+ document.getElementById('profileSummary').textContent=`${data.profile.level} · Interés: ${data.profile.focus}`;
+ document.getElementById('totalSessions').textContent=t.count;document.getElementById('weekSessions').textContent=t.week;document.getElementById('totalMinutes').textContent=t.minutes;
+ document.getElementById('weeklyLabel').textContent=`${t.week} / ${goal} sesiones`;document.getElementById('weeklyBar').style.width=Math.min(100,t.week/goal*100)+'%';
+ document.getElementById('historyCount').textContent=t.count;document.getElementById('historyTime').textContent=t.minutes;document.getElementById('historyGoal').textContent=`${t.week}/${goal}`;
+ const recent=data.sessions.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,4);
+ document.getElementById('recentHistory').innerHTML=recent.length?recent.map(historyHTML).join(''):'Todavía no hay sesiones registradas. Cuando completes una rutina, aparecerá aquí.';
+ document.getElementById('fullHistory').innerHTML=data.sessions.length?data.sessions.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(historyHTML).join(''):'Aún no has registrado sesiones.';
+ document.getElementById('name').value=data.profile.name||'';document.getElementById('level').value=data.profile.level;document.getElementById('days').value=goal;document.getElementById('focus').value=data.profile.focus;
+}
+function historyHTML(s){return `<div class="history-item"><span><b>${escapeHTML(s.type)}</b><br><span class="small">${escapeHTML(s.date)}${s.notes?' · '+escapeHTML(s.notes):''}</span></span><b>${Number(s.minutes)} min</b></div>`}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('[data-view]').forEach(a=>a.classList.toggle('active',a.dataset.view===id));document.getElementById('navlinks').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-view]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();showView(a.dataset.view)}));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{if(!a.dataset.view)a.addEventListener('click',()=>{const id=a.getAttribute('href').slice(1);if(['inicio','rutinas','progreso','perfil'].includes(id))showView(({inicio:'dashboard',rutinas:'routines',progreso:'progress',perfil:'profile'})[id]||'dashboard')})});
+function openSession(type='Fuerza'){document.getElementById('sessionType').value=type;document.getElementById('sessionDate').value=new Date().toISOString().slice(0,10);document.getElementById('sessionModal').classList.add('open')}
+function close(id){document.getElementById(id).classList.remove('open')}
+document.getElementById('quickStart').onclick=()=>openSession();
+document.getElementById('profileButton').onclick=()=>showView('profile');
+document.getElementById('editProfile').onclick=()=>showView('profile');
+document.getElementById('closeModal').onclick=()=>close('sessionModal');
+document.getElementById('closeRoutine').onclick=()=>close('routineModal');
+document.getElementById('sessionModal').addEventListener('click',e=>{if(e.target.id==='sessionModal')close('sessionModal')});
+document.getElementById('routineModal').addEventListener('click',e=>{if(e.target.id==='routineModal')close('routineModal')});
+document.getElementById('sessionForm').onsubmit=e=>{e.preventDefault();data.sessions.push({id:Date.now(),type:document.getElementById('sessionType').value,minutes:Number(document.getElementById('minutes').value),date:document.getElementById('sessionDate').value,notes:document.getElementById('notes').value.trim()});save();close('sessionModal');e.target.reset();toast('Sesión guardada. ¡Buen trabajo!')};
+document.getElementById('profileForm').onsubmit=e=>{e.preventDefault();data.profile={name:document.getElementById('name').value.trim(),level:document.getElementById('level').value,days:Number(document.getElementById('days').value),focus:document.getElementById('focus').value};save();toast('Perfil actualizado')};
+function showRoutine(id){currentRoutine=routines.find(r=>r.id===id);if(!currentRoutine)return;document.getElementById('routineTitle').textContent=currentRoutine.name;document.getElementById('routineDescription').textContent=currentRoutine.desc;document.getElementById('exerciseList').innerHTML=currentRoutine.items.map((it,i)=>`<div class="exercise"><input type="checkbox" id="ex${i}"><label for="ex${i}"><b>${escapeHTML(it[0])}</b><small>${escapeHTML(it[1])}</small></label></div>`).join('');document.getElementById('routineModal').classList.add('open')}
+document.querySelectorAll('[data-routine]').forEach(b=>b.onclick=()=>showRoutine(b.dataset.routine));
+function renderRoutines(filter='all'){const list=filter==='all'?routines:routines.filter(r=>r.type===filter);document.getElementById('routineGrid').innerHTML=list.map(r=>`<article class="panel span-4"><span class="pill">${r.type==='strength'?'FUERZA':r.type==='cardio'?'CARDIO SUAVE':'MOVILIDAD'}</span><h2 style="margin-top:17px">${r.name}</h2><p class="muted" style="font-size:13px">${r.desc}</p><p class="small">Duración orientativa · ${r.duration} min</p><button class="btn" data-open="${r.id}">VER RUTINA →</button></article>`).join('');document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>showRoutine(b.dataset.open))}
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));renderRoutines(b.dataset.filter)});
+document.getElementById('completeRoutine').onclick=()=>{if(!currentRoutine)return;close('routineModal');openSession(currentRoutine.name);document.getElementById('minutes').value=currentRoutine.duration};
+document.getElementById('exportData').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='nexora-mis-datos.json';a.click();URL.revokeObjectURL(a.href);toast('Exportación preparada')};
+document.getElementById('clearData').onclick=()=>{if(confirm('¿Seguro que quieres borrar el perfil y todas las sesiones guardadas en este navegador?')){localStorage.removeItem(KEY);data=loadData();render();toast('Datos locales borrados')}};
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2600)}
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+document.getElementById('menu').onclick=()=>document.getElementById('navlinks').classList.toggle('open');
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('timerStart').onclick=()=>{if(timerInterval){clearInterval(timerInterval);timerInterval=null;document.getElementById('timerStart').textContent='REANUDAR';return}document.getElementById('timerStart').textContent='PAUSAR';timerInterval=setInterval(()=>{timerSeconds=Math.max(0,timerSeconds-1);document.getElementById('timerDisplay').textContent=`${String(Math.floor(timerSeconds/60)).padStart(2,'0')}:${String(timerSeconds%60).padStart(2,'0')}`;if(timerSeconds===0){clearInterval(timerInterval);timerInterval=null;document.getElementById('timerStart').textContent='INICIAR';toast('Intervalo terminado')}},1000)};
+document.getElementById('timerReset').onclick=()=>{clearInterval(timerInterval);timerInterval=null;timerSeconds=30;document.getElementById('timerDisplay').textContent='00:30';document.getElementById('timerStart').textContent='INICIAR'};
+render();renderRoutines();
+</script>
+</body></html>
